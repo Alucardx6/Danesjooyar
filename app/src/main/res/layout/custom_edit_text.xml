@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.textfield.TextInputLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/textInputLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="16dp"
+    app:errorEnabled="true"
+    app:hintAnimationEnabled="true"
+    app:hintEnabled="true"
+    app:hintTextAppearance="@style/HintTextAppearance"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:startIconCheckable="true"
+    app:startIconDrawable="@drawable/ic_clear">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/text_input_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:inputType="text"
+        android:paddingTop="4dp"
+        android:paddingBottom="-4dp"
+        android:textAlignment="textEnd"
+        android:textColor="@color/color_text_black"
+        android:textColorHint="@color/color_text_gray"
+        android:textSize="20sp" />
+
+</com.google.android.material.textfield.TextInputLayout>
+
+

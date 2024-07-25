@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_main"
+    android:orientation="vertical"
+    tools:context=".ui.activity.VideoActivity">
+
+    <ir.abyx.daneshjooyar.ui.customView.CustomAppBar
+        android:id="@+id/custom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:backIcon="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_video_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:textColor="@color/color_text_black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="۱. المنتور چیست؟ چرا باید از آن استفاده کنیم؟" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/video_card_view"
+                android:layout_width="0dp"
+                app:cardCornerRadius="15dp"
+                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/txt_video_title"
+                app:layout_constraintStart_toStartOf="@+id/txt_video_title"
+                app:layout_constraintTop_toBottomOf="@+id/txt_video_title">
+
+                <com.google.android.exoplayer2.ui.PlayerView
+                    android:id="@+id/video_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:padding="1dp"
+                    android:background="@drawable/back_video_player"
+                    app:controller_layout_id="@layout/custom_controller"
+                    app:player_layout_id="@layout/exo_player_view"
+                    app:use_controller="true" />
+
+            </androidx.cardview.widget.CardView>
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/video_desc"
+                android:textColor="@color/color_text_black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/video_card_view"
+                app:layout_constraintStart_toStartOf="@+id/video_card_view"
+                app:layout_constraintTop_toBottomOf="@+id/video_card_view" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/progress_title"
+                android:textColor="@color/color_text_black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/justifiedTextView"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/justifiedTextView"
+                app:layout_constraintTop_toBottomOf="@+id/justifiedTextView" />
+
+            <RelativeLayout
+                android:id="@+id/layout_progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="@+id/justifiedTextView"
+                app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+                <SeekBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="8dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressTint="@color/blue"
+                    android:thumb="@android:color/transparent" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottie_animation_view"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:rotation="90"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/progress_indicator" />
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/txt_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_text_black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/layout_progress"
+                app:layout_constraintEnd_toEndOf="@+id/layout_progress"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/layout_progress"
+                tools:text="۲۵/۱۰۰%" />
+
+            <ir.abyx.daneshjooyar.ui.customView.CustomButton
+                android:id="@+id/btn_video_complete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/layout_progress"
+                app:layout_constraintStart_toStartOf="@+id/layout_progress"
+                app:layout_constraintTop_toBottomOf="@+id/layout_progress"
+                app:text="من این بخش رو کامل دیدم" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_guid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/back_button_white"
+                android:text="@string/guid"
+                android:textColor="@color/blue"
+                app:layout_constraintEnd_toEndOf="@+id/btn_video_complete"
+                app:layout_constraintStart_toStartOf="@+id/btn_video_complete"
+                app:layout_constraintTop_toBottomOf="@+id/btn_video_complete" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:elevation="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/btn_guid"
+                app:layout_constraintStart_toStartOf="@+id/btn_guid"
+                app:layout_constraintTop_toBottomOf="@+id/btn_guid">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_previous"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/back_button_white"
+                    android:text="@string/previous_video"
+                    android:textColor="@color/blue" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_next"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/back_button_white"
+                    android:text="@string/next_video"
+                    android:textColor="@color/blue" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

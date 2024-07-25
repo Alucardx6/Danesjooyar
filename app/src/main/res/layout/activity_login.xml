@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_main"
+    android:orientation="vertical"
+    tools:context=".ui.activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="64dp"
+        android:contentDescription="@string/img_desc"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/login_or_signup"
+        android:textColor="@color/color_text_black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/txt_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/login_desc"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_title"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_title"
+        app:layout_constraintTop_toBottomOf="@+id/txt_title" />
+
+    <TextView
+        android:id="@+id/txt_edit_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:drawablePadding="10dp"
+        android:text="@string/edit_phone"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:drawableRightCompat="@drawable/edit"
+        app:layout_constraintEnd_toEndOf="@+id/txt_desc"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_desc"
+        app:layout_constraintTop_toBottomOf="@+id/txt_desc" />
+
+    <ir.abyx.daneshjooyar.ui.customView.CustomEditText
+        android:id="@+id/custom_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:hintText="شماره موبایل"
+        app:layout_constraintEnd_toEndOf="@+id/txt_desc"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_edit_phone"
+        app:max="11"
+        app:type="3" />
+
+    <ir.abyx.daneshjooyar.ui.customView.CustomButton
+        android:id="@+id/custom_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/custom_edit_text"
+        app:layout_constraintStart_toStartOf="@+id/custom_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/custom_edit_text"
+        app:text="تایید و ادامه" />
+
+    <TextView
+        android:id="@+id/txt_resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/resend"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/custom_button"
+        app:layout_constraintStart_toStartOf="@+id/custom_button"
+        app:layout_constraintTop_toBottomOf="@+id/linear_terms" />
+
+    <LinearLayout
+        android:id="@+id/linear_terms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/custom_button"
+        app:layout_constraintStart_toStartOf="@+id/custom_button"
+        app:layout_constraintTop_toBottomOf="@+id/custom_button">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_login"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/txt_terms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms"
+            android:textColor="@color/blue"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
