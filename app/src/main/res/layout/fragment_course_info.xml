@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_main"
+    android:overScrollMode="never"
     android:scrollbars="none">
 
     <LinearLayout
@@ -67,7 +68,6 @@
             app:layout_constraintTop_toBottomOf="@+id/card_view"
             tools:itemCount="1"
             tools:listitem="@layout/recycler_item_grid" />
-
 
     </LinearLayout>
 

@@ -31,9 +31,10 @@ class ViewVideoActivity(private val context: Context, private val activityUtils:
 
     @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     fun initialize(videoInfo: String, history: VideoModel, viewUtils: ViewUtils) {
-        val lottieAnimationView = binding.lottieAnimationView
-
         binding.apply {
+
+            txtVideoTitle.text = history.title
+
             progressBar.progress = history.percent.roundToInt()
             txtProgress.text = "${progressBar.progress}/100%"
             updateLottiePosition()
@@ -161,7 +162,7 @@ class ViewVideoActivity(private val context: Context, private val activityUtils:
 
     private fun updateLottiePosition() {
         val thumbX = binding.progressBar.thumb.bounds.left
-        val newX = (thumbX - binding.lottieAnimationView.width / 2 + 16).toFloat()
+        val newX = (thumbX - binding.lottieAnimationView.width / 2 + 32).toFloat()
         binding.lottieAnimationView.x = maxOf(0f, newX)
     }
 

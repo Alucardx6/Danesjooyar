@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -18,62 +18,70 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/view_group_fullscreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="custom_app_bar, txt_video_title, content"/>
+
+    <TextView
+        android:id="@+id/txt_video_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp">
+        android:layout_margin="16dp"
+        android:textColor="@color/color_text_black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_app_bar"
+        tools:text="۱. المنتور چیست؟ چرا باید از آن استفاده کنیم؟" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/video_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/your_cad_view_height"
+        android:elevation="10dp"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_video_title">
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/video_player"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:controller_layout_id="@layout/custom_controller"
+            app:player_layout_id="@layout/exo_player_view"
+            app:resize_mode="fill"
+            app:use_controller="true" />
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:id="@+id/content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scrollIndicators="none"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/video_card_view"
+        app:layout_constraintStart_toStartOf="@+id/video_card_view"
+        app:layout_constraintTop_toBottomOf="@+id/video_card_view">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/txt_video_title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:textColor="@color/color_text_black"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="۱. المنتور چیست؟ چرا باید از آن استفاده کنیم؟" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/video_card_view"
-                android:layout_width="0dp"
-                app:cardCornerRadius="15dp"
-                android:elevation="10dp"
-                android:layout_marginTop="16dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@+id/txt_video_title"
-                app:layout_constraintStart_toStartOf="@+id/txt_video_title"
-                app:layout_constraintTop_toBottomOf="@+id/txt_video_title">
-
-                <com.google.android.exoplayer2.ui.PlayerView
-                    android:id="@+id/video_player"
-                    android:layout_width="match_parent"
-                    android:layout_height="240dp"
-                    app:resize_mode="fill"
-                    app:controller_layout_id="@layout/custom_controller"
-                    app:player_layout_id="@layout/exo_player_view"
-                    app:use_controller="true" />
-            </androidx.cardview.widget.CardView>
-
             <com.codesgood.views.JustifiedTextView
                 android:id="@+id/justifiedTextView"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="@string/video_desc"
                 android:textColor="@color/color_text_black"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@+id/video_card_view"
-                app:layout_constraintStart_toStartOf="@+id/video_card_view"
-                app:layout_constraintTop_toBottomOf="@+id/video_card_view" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -103,8 +111,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginTop="8dp"
-                    android:max="100"
                     android:background="@null"
+                    android:max="100"
                     android:progressTint="@color/blue"
                     android:thumb="@android:color/transparent" />
 
@@ -189,4 +197,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

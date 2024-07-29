@@ -41,6 +41,7 @@ class RecyclerAdapterVideo(
                 root.setOnClickListener {
                     val intent = Intent(context, VideoActivity::class.java)
                     intent.putExtra("id", video.id)
+                    intent.putExtra("title", video.title)
                     context.startActivity(intent)
                 }
             }

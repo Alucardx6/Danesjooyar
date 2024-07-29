@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ModelVideoActivity(private val id: Int, private val context: Context) {
+class ModelVideoActivity(private val id: Int, private val title: String, private val context: Context) {
     fun getVideoHistory(callBackRequest: CallbackRequest<VideoModel>) {
         CoroutineScope(Dispatchers.IO).launch {
 
@@ -28,7 +28,7 @@ class ModelVideoActivity(private val id: Int, private val context: Context) {
 
             val percent = SecureSharePref.getSharedPref(context).getFloat("percent$id", 1f)
 
-            callBackRequest.getRes(VideoModel(watchedHistory = final, percent = percent))
+            callBackRequest.getRes(VideoModel(watchedHistory = final, percent = percent, title = title))
         }
     }
 

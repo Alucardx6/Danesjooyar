@@ -50,13 +50,6 @@ class CourseDetailActivity : AppCompatActivity(), ActivityUtils {
         finish()
     }
 
-//    override fun fullScreen(isFullscreen: Boolean) {
-//        requestedOrientation = if (isFullscreen)
-//            ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-//        else
-//            ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-//    }
-
     override fun onStop() {
         super.onStop()
         presenter.onStop()
