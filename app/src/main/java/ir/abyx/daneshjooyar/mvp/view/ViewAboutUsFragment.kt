@@ -6,8 +6,7 @@ import ir.abyx.daneshjooyar.androidWrapper.ActivityUtils
 import ir.abyx.daneshjooyar.databinding.FragmentAboutUsBinding
 
 class ViewAboutUsFragment(
-    context: Context,
-    private val activityUtils: ActivityUtils
+    context: Context
 ) {
 
     val binding = FragmentAboutUsBinding.inflate(LayoutInflater.from(context))

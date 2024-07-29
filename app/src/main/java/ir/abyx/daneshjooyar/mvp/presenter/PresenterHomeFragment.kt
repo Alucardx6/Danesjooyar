@@ -16,7 +16,9 @@ class PresenterHomeFragment(
     private val context: Context, private val view: ViewHomeFragment,
     private val model: ModelHomeFragment
 ) : BaseLifecycle {
+
     override fun onCreate() {
+
         model.getMain(object : CallbackRequest<MainModel> {
             override fun getResponse(response: ArrayList<MainModel>) {
                 CoroutineScope(Dispatchers.Main).launch {

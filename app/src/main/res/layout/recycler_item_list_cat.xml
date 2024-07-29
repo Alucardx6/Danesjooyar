@@ -7,7 +7,7 @@
     android:layout_margin="8dp"
     android:background="@drawable/back_item_cat_default"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/txt_title"

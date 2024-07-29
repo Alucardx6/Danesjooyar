@@ -6,15 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ir.abyx.daneshjooyar.adapter.recycler.RecyclerAdapterCat
 import ir.abyx.daneshjooyar.adapter.recycler.RecyclerAdapterMainContent
-import ir.abyx.daneshjooyar.androidWrapper.ActivityUtils
 import ir.abyx.daneshjooyar.data.local.dataModel.ContentModel
 import ir.abyx.daneshjooyar.data.local.dataModel.MainModel
 import ir.abyx.daneshjooyar.databinding.FragmentHomeBinding
 import ir.abyx.daneshjooyar.mvp.ext.ViewUtils
 
 class ViewHomeFragment(
-    context: Context,
-    private val activityUtils: ActivityUtils
+    context: Context
 ) {
 
     val binding = FragmentHomeBinding.inflate(LayoutInflater.from(context))

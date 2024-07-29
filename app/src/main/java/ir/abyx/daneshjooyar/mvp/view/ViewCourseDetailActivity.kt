@@ -79,8 +79,8 @@ class ViewCourseDetailActivity(
         binding.apply {
             activityUtils.viewPagerFragment(
                 viewPager, listOf(
-                    CourseVideosFragment(context, activityUtils),
-                    CourseInfoFragment(context, activityUtils)
+                    CourseVideosFragment(activityUtils),
+                    CourseInfoFragment(activityUtils)
                 ), listOf("ویدیو‌ ها", "اطلاعات")
             )
 

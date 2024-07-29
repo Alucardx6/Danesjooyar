@@ -16,3 +16,8 @@ data class ContentModel(
     val title: String,
     val image: Int
 )
+
+//data class VideoModel(
+//    val history: MutableList<Pair<Long, Long>>,
+//    val percent: Float
+//)

@@ -15,7 +15,6 @@ import ir.abyx.daneshjooyar.mvp.view.ViewCourseInfoFragment
 import ir.abyx.daneshjooyar.mvp.view.ViewHomeFragment
 
 class CourseInfoFragment (
-    private val context: Context,
     private val activityUtils: ActivityUtils
 ) : Fragment() {
 
@@ -25,8 +24,8 @@ class CourseInfoFragment (
         savedInstanceState: Bundle?
     ): View {
 
-        val view = ViewCourseInfoFragment(context, activityUtils)
-        val presenter = PresenterCourseInfoFragment(context, view, ModelCourseInfoFragment())
+        val view = ViewCourseInfoFragment(requireContext(), activityUtils)
+        val presenter = PresenterCourseInfoFragment(requireContext(), view, ModelCourseInfoFragment())
         presenter.onCreate()
         return view.binding.root
     }

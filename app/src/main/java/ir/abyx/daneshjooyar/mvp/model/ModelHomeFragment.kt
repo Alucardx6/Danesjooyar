@@ -4,7 +4,9 @@ import ir.abyx.daneshjooyar.R
 import ir.abyx.daneshjooyar.data.local.dataModel.CatModel
 import ir.abyx.daneshjooyar.data.local.dataModel.ContentModel
 import ir.abyx.daneshjooyar.data.local.dataModel.MainModel
+import ir.abyx.daneshjooyar.data.local.dataModel.VideoModel
 import ir.abyx.daneshjooyar.data.local.ext.CallbackRequest
+import ir.abyx.daneshjooyar.mvp.ext.ToastUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -12,7 +14,7 @@ import kotlinx.coroutines.launch
 class ModelHomeFragment {
 
     private val catTitles =
-        listOf("طراحی سایت", "برنامه نویسی", "هوش مصنوعی", "امنیت شبکه", "بازی سازی")
+        listOf("طراحی سایت", "برنامه نویسی موبایل", "هوش مصنوعی", "امنیت شبکه", "بازی سازی")
     private val catIcon =
         listOf(
             R.drawable.ic_site, R.drawable.ic_mobile_development,

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import ir.abyx.daneshjooyar.androidWrapper.ActivityUtils
 import ir.abyx.daneshjooyar.databinding.FragmentDoscBinding
 
-class ViewDocsFragment(context: Context, private val activityUtils: ActivityUtils) {
+class ViewDocsFragment(context: Context) {
 
     val binding = FragmentDoscBinding.inflate(LayoutInflater.from(context))
 

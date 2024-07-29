@@ -6,4 +6,8 @@ interface ViewUtils {
 
     fun getContent(id: Int) {}
 
+    fun startPolling(startPosition: Long) {}
+
+    fun videoStop(stopPosition: Long?, startPosition: Long, currentTime: Long) {}
+
 }

@@ -14,12 +14,15 @@ import ir.abyx.daneshjooyar.mvp.view.ViewVideoActivity
 class VideoActivity : AppCompatActivity(), ActivityUtils {
 
     private lateinit var presenter: PresenterVideoActivity
+    private lateinit var view: ViewVideoActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val view = ViewVideoActivity(this, this)
+        view = ViewVideoActivity(this, this)
+
+        val id = intent.getIntExtra("id", 0)
 
         setContentView(view.binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(view.binding.main) { v, insets ->
@@ -27,7 +30,8 @@ class VideoActivity : AppCompatActivity(), ActivityUtils {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        presenter = PresenterVideoActivity(this, view, ModelVideoActivity())
+        presenter = PresenterVideoActivity(this, view, ModelVideoActivity(id, this
+        ))
         presenter.onCreate()
     }
 

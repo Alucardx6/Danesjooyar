@@ -39,7 +39,9 @@ class RecyclerAdapterVideo(
                 imgVideo.setImageResource(video.image)
 
                 root.setOnClickListener {
-                    context.startActivity(Intent(context, VideoActivity::class.java))
+                    val intent = Intent(context, VideoActivity::class.java)
+                    intent.putExtra("id", video.id)
+                    context.startActivity(intent)
                 }
             }
         }

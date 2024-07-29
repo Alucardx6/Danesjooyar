@@ -24,16 +24,16 @@ class ViewMainActivity(private val context: Context, private val activityUtils: 
     }
 
     fun setFragment() {
-        activityUtils.setFragment(HomeFragment(context, activityUtils))
+        activityUtils.setFragment(HomeFragment())
     }
 
     fun initNav() {
         binding.customBottomNav.onClickHelper(object : ActiveFragment {
             override fun setFragment(type: FragmentType) {
                 val fragment = when (type) {
-                    FragmentType.HOME -> HomeFragment(context, activityUtils)
-                    FragmentType.ABOUT_US -> AboutUsFragment(context, activityUtils)
-                    FragmentType.DOCUMENTS -> DocsFragment(context, activityUtils)
+                    FragmentType.HOME -> HomeFragment()
+                    FragmentType.ABOUT_US -> AboutUsFragment()
+                    FragmentType.DOCUMENTS -> DocsFragment()
                 }
 
                 activityUtils.setFragment(fragment)
