@@ -1,7 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Daneshjooyar" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:fontFamily">@font/sans_fa_name_regular</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
+
+    <style name="Theme.Daneshjooyar.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Daneshjooyar" parent="Base.Theme.Daneshjooyar" />
+
+    <style name="Theme.Daneshjooyar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Daneshjooyar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -7,6 +7,7 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import ir.abyx.daneshjooyar.R
 import ir.abyx.daneshjooyar.androidWrapper.ActivityUtils
 import ir.abyx.daneshjooyar.databinding.ActivityLoginBinding
@@ -14,9 +15,9 @@ import ir.abyx.daneshjooyar.mvp.ext.ToastUtils
 import ir.abyx.daneshjooyar.mvp.ext.ViewUtils
 import ir.abyx.daneshjooyar.ui.activity.MainActivity
 import ir.abyx.daneshjooyar.ui.activity.TermActivity
-import ir.abyx.pastry.data.local.preferences.SharedPrefKey
 import java.util.Locale
 import java.util.concurrent.TimeUnit
+
 
 class ViewLoginActivity(private val context: Context, private val activityUtils: ActivityUtils) {
 
@@ -27,6 +28,7 @@ class ViewLoginActivity(private val context: Context, private val activityUtils:
 
     fun initialize(viewUtils: ViewUtils) {
         binding.apply {
+
             customButton.disableButton()
 
             customEditText.setOnTextChangedListener { text ->
@@ -37,7 +39,15 @@ class ViewLoginActivity(private val context: Context, private val activityUtils:
                 }
             }
 
-            customEditText.clear().setStartIconOnClickListener {
+            pinEntryEditText.addTextChangedListener {
+                if (pinEntryEditText.text.toString().length == 5) {
+                    customButton.enableButton()
+                } else {
+                    customButton.disableButton()
+                }
+            }
+
+            customEditText.clear().setEndIconOnClickListener {
                 customEditText.setText("")
             }
 
@@ -53,10 +63,10 @@ class ViewLoginActivity(private val context: Context, private val activityUtils:
 
                     validatePhase(phone)
                 } else {
-                    if (validateCode("12345")) {
+                    if (validateCode(pinEntryEditText.text.toString())) {
                         viewUtils.saveUser()
                     } else {
-                        //TODO:set Error for validation box
+                        inputLayoutPin.error = "کد تایید وارد شده نامعتبر است"
                     }
                 }
             }
@@ -94,11 +104,18 @@ class ViewLoginActivity(private val context: Context, private val activityUtils:
         }
 
         binding.apply {
+
+            if (pinEntryEditText.text.toString().length != 5) {
+                customButton.disableButton()
+            }
+
             validation = true
             txtTitle.text = "کد تایید ۵ رقمی را وارد کنید."
             txtDesc.text = "کد تایید برای شماره موبایل $phone ارسال شد."
             customButton.getView().text = "ورود"
             txtEditPhone.visibility = View.VISIBLE
+            inputLayoutPin.visibility = View.VISIBLE
+            customEditText.visibility = View.INVISIBLE
             linearTerms.visibility = View.GONE
             txtResend.visibility = View.VISIBLE
         }
@@ -107,12 +124,17 @@ class ViewLoginActivity(private val context: Context, private val activityUtils:
     @SuppressLint("SetTextI18n")
     private fun editPhone() {
         binding.apply {
+
+            customButton.enableButton()
+
             validation = false
             txtTitle.text = "ورود یا ثبت نام"
             txtDesc.text = "لطفا شماره موبایل خود را وارد کنید."
             customButton.getView().text = "تایید و ادامه"
             txtEditPhone.visibility = View.GONE
+            customEditText.visibility = View.VISIBLE
             linearTerms.visibility = View.VISIBLE
+            inputLayoutPin.visibility = View.GONE
             txtResend.visibility = View.GONE
         }
     }

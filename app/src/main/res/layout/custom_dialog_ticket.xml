@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    android:minWidth="380dp"
     android:background="@drawable/back_item_content"
-    android:paddingBottom="12dp">
+    android:minWidth="380dp"
+    android:paddingBottom="20dp">
 
     <ImageView
         android:id="@+id/img_cancel"
@@ -40,6 +39,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:hintText="عنوان"
+        app:isIconVisible="false"
         app:layout_constraintEnd_toEndOf="@+id/img_cancel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -48,12 +48,14 @@
         android:id="@+id/custom_edt_desc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:minHeight="130dp"
+        app:height="130dp"
         app:hintText="متن پیام..."
+        app:isIconVisible="false"
         app:layout_constraintEnd_toEndOf="@+id/custom_edt_title"
         app:layout_constraintStart_toStartOf="@+id/custom_edt_title"
-        app:layout_constraintTop_toBottomOf="@+id/custom_edt_title" />
+        app:layout_constraintTop_toBottomOf="@+id/custom_edt_title"
+        app:topGravity="true"
+        app:type="131072" />
 
     <ir.abyx.daneshjooyar.ui.customView.CustomButton
         android:id="@+id/custom_button"

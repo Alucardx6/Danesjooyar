@@ -5,6 +5,7 @@ lottie = "6.3.0"
 justifiedtextview = "1.1.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
+retrofit = "2.9.0"
 junit = "4.13.2"
 junitVersion = "1.2.0"
 espressoCore = "3.6.0"
@@ -27,6 +28,8 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 justifiedtextview = { module = "com.codesgood:justifiedtextview", version.ref = "justifiedtextview" }
 androidx-security-crypto = { module = "androidx.security:security-crypto", version.ref = "securityCrypto" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

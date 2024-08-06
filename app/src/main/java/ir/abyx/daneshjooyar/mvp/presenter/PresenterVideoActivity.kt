@@ -31,33 +31,48 @@ class PresenterVideoActivity(
     private var defaultPercent: Float = 0f
 
     override fun onCreate() {
-        view.backButton()
+        view.initAppBar()
         initialize()
     }
 
     private fun initialize() {
         val videoFilePath = "android.resource://${context.packageName}/${R.raw.hitler}"
 
-        model.getVideoHistory(object: CallbackRequest<VideoModel> {
+        model.getVideoHistory(object : CallbackRequest<VideoModel> {
             override fun getRes(response: VideoModel) {
 
                 Log.i("DEBUG_TIMELINE", "sqlite: $response")
 
-                watchedSegments = response.watchedHistory
+                val final: MutableList<Pair<Long, Long>> = try {
+                    response.watchedHistory.split("|").map {
+                        val (start, end) = it.split(",").map { it.toLong() }
+                        Pair(start, end)
+                    }.toMutableList()
+                } catch (e: Exception) {
+                    mutableListOf()
+                }
+
+                watchedSegments = final
                 actualPercent = response.percent
 
                 CoroutineScope(Dispatchers.Main).launch {
-                    view.initialize(videoFilePath, response, object: ViewUtils {
+                    view.initialize(videoFilePath, response, object : ViewUtils {
                         override fun startPolling(startPosition: Long) {
 
                             if (defaultPercent == 0f) {
-                                defaultPercent = "%.2f".format((100f / view.getVideoDuration() * 1000f)).toFloat()
+                                defaultPercent =
+                                    "%.2f".format((100f / view.getVideoDuration() * 1000f))
+                                        .toFloat()
                             }
 
                             startPositionPolling(startPosition)
                         }
 
-                        override fun videoStop(stopPosition: Long?, startPosition: Long, currentTime: Long) {
+                        override fun videoStop(
+                            stopPosition: Long?,
+                            startPosition: Long,
+                            currentTime: Long
+                        ) {
                             CoroutineScope(Dispatchers.IO).launch {
                                 stopPositionPolling()
                                 var stopPos = stopPosition

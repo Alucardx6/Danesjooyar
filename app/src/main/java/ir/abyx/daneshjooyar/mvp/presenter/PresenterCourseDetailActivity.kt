@@ -12,8 +12,8 @@ class PresenterCourseDetailActivity(
 ) : BaseLifecycle {
     override fun onCreate() {
         initialize()
-        view.initTab()
-        view.backButton()
+        view.initTab(model.getTitle())
+        view.initAppBar()
     }
 
     private fun initialize() {

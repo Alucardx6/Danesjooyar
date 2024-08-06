@@ -44,13 +44,19 @@ class RecyclerAdapterCat(
                     itemLayout.setBackgroundResource(R.drawable.back_item_cat_default)
                 }
 
+//                Glide.with(context).load(item.icon)
+//                    .placeholder(R.drawable.img_place_holder)
+//                    .format(DecodeFormat.PREFER_RGB_565).into(imgIcon)
+
                 txtTitle.text = item.title
                 imgIcon.setImageResource(item.icon)
 
                 root.setOnClickListener {
                     viewUtils.getContent(item.id)
+                    val previousPosition = selectedPosition
                     selectedPosition = position
-                    notifyDataSetChanged()
+                    notifyItemChanged(previousPosition)
+                    notifyItemChanged(selectedPosition)
                 }
             }
         }

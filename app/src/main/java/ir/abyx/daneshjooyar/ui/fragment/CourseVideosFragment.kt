@@ -11,7 +11,8 @@ import ir.abyx.daneshjooyar.mvp.presenter.PresenterCourseVideosFragment
 import ir.abyx.daneshjooyar.mvp.view.ViewCourseVideosFragment
 
 class CourseVideosFragment(
-    private val activityUtils: ActivityUtils
+    private val activityUtils: ActivityUtils,
+    private val title: String
 ) : Fragment() {
 
     override fun onCreateView(
@@ -22,7 +23,7 @@ class CourseVideosFragment(
 
         val view = ViewCourseVideosFragment(requireContext(), activityUtils)
         val presenter =
-            PresenterCourseVideosFragment(requireContext(), view, ModelCourseVideosFragment())
+            PresenterCourseVideosFragment(requireContext(), view, ModelCourseVideosFragment(requireContext(), title))
         presenter.onCreate()
         return view.binding.root
     }

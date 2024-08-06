@@ -33,13 +33,25 @@ class CustomEditText(
         val rtlSupport =
             typeArray.getBoolean(R.styleable.CustomEditText_rtlSupport, false)
         val maxLength = typeArray.getInteger(R.styleable.CustomEditText_max, 0)
-        val centerGravity =
-            typeArray.getBoolean(R.styleable.CustomEditText_centerGravity, false)
+        val topGravity =
+            typeArray.getBoolean(R.styleable.CustomEditText_topGravity, false)
+        val height = typeArray.getDimensionPixelSize(R.styleable.CustomEditText_height, 60.dpToPx())
+        val icon =
+            typeArray.getBoolean(R.styleable.CustomEditText_isIconVisible, false)
 
         binding.apply {
             textInputLayout.hint = hint
-            textInputLayout.isStartIconVisible = false
-            textInputEditText.inputType = type
+            textInputLayout.isEndIconVisible = false
+
+            if (type == 1 || type == 3) {
+                textInputEditText.inputType = type
+            }
+
+            if (type == 3) {
+                textInputEditText.textAlignment = TEXT_ALIGNMENT_TEXT_END
+            }
+
+            textInputEditText.layoutParams.height = height
 
             if (rtlSupport) {
                 textInputEditText.textDirection = TEXT_DIRECTION_RTL
@@ -49,8 +61,8 @@ class CustomEditText(
             if (maxLength > 0)
                 textInputEditText.filters = arrayOf(InputFilter.LengthFilter(maxLength))
 
-            if (centerGravity)
-                textInputEditText.gravity = Gravity.CENTER
+            if (topGravity)
+                textInputEditText.gravity = Gravity.TOP
 
             typeArray.recycle()
 
@@ -65,7 +77,9 @@ class CustomEditText(
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     onTextChangedListener?.invoke(s.toString())
-                    textInputLayout.isStartIconVisible = !s.isNullOrEmpty()
+                    if (icon) {
+                        textInputLayout.isEndIconVisible = !s.isNullOrEmpty()
+                    }
                 }
 
                 override fun afterTextChanged(s: Editable?) {}
@@ -73,6 +87,8 @@ class CustomEditText(
         }
 
     }
+
+    private fun Int.dpToPx(): Int = (this * resources.displayMetrics.density).toInt()
 
     fun setOnTextChangedListener(listener: (String) -> Unit) {
         onTextChangedListener = listener

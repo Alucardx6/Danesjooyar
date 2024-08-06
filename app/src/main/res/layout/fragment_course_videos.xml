@@ -19,19 +19,20 @@
         android:id="@+id/txt_congrat"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
         android:textColor="@color/white_main"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/img_congrat"
         app:layout_constraintTop_toTopOf="@+id/guideline3"
-        tools:text="شما آموزش طراحی سایت را به پایان رسانده اید." />
+        tools:text="دوره آموزش برنامه نویسی اندروید به زبان کاتلین به همراه پروژه عملی" />
 
     <androidx.constraintlayout.widget.Group
+        android:id="@+id/finished"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
@@ -60,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="241dp" />
+        app:layout_constraintGuide_begin="220dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"

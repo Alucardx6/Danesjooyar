@@ -22,8 +22,9 @@ class CourseDetailActivity : AppCompatActivity(), ActivityUtils {
         enableEdgeToEdge()
 
         val id = intent.getIntExtra("id", 0)
+        val title = intent.getStringExtra("title")
 
-        val view = ViewCourseDetailActivity(this, id, this)
+        val view = ViewCourseDetailActivity(this,this)
         setContentView(view.binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(view.binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -31,7 +32,7 @@ class CourseDetailActivity : AppCompatActivity(), ActivityUtils {
             insets
         }
 
-        presenter = PresenterCourseDetailActivity(this, view, ModelCourseDetailActivity())
+        presenter = PresenterCourseDetailActivity(this, view, ModelCourseDetailActivity(id, title!!))
         presenter.onCreate()
 
     }

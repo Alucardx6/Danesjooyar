@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import ir.abyx.daneshjooyar.mvp.ext.ToastUtils
 import ir.abyx.daneshjooyar.mvp.model.ModelHomeFragment
 import ir.abyx.daneshjooyar.mvp.presenter.PresenterHomeFragment
 import ir.abyx.daneshjooyar.mvp.view.ViewHomeFragment
@@ -22,5 +23,4 @@ class HomeFragment : Fragment() {
         presenter.onCreate()
         return view.binding.root
     }
-
 }

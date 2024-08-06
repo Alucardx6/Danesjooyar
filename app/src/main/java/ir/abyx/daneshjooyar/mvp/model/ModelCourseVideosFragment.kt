@@ -1,13 +1,19 @@
 package ir.abyx.daneshjooyar.mvp.model
 
+import android.content.Context
 import ir.abyx.daneshjooyar.R
+import ir.abyx.daneshjooyar.data.local.dataModel.CourseModel
 import ir.abyx.daneshjooyar.data.local.dataModel.CourseVideosModel
+import ir.abyx.daneshjooyar.data.local.dataModel.VideoModel
+import ir.abyx.daneshjooyar.data.local.db.DBHelper
 import ir.abyx.daneshjooyar.data.local.ext.CallbackRequest
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ModelCourseVideosFragment {
+class ModelCourseVideosFragment(context: Context, private val title: String) {
+
+    private val service = DBHelper.getDatabase(context).videoDao()
 
 
     private val videoTitles = listOf(
@@ -26,15 +32,22 @@ class ModelCourseVideosFragment {
         R.drawable.image_2,
     )
 
-    fun getVideoList(callbackRequest: CallbackRequest<CourseVideosModel>) {
+    fun getVideoList(callbackRequest: CallbackRequest<CourseModel>) {
         CoroutineScope(Dispatchers.IO).launch {
+
             val courseVideos = ArrayList<CourseVideosModel>()
 
             for (i in videoTitles.indices) {
-                courseVideos.add(CourseVideosModel(i, videoTitles[i], videoImages[i], 0))
+                if (service.getVideoHistoryById(i + 1) == null) {
+                    service.saveVideoHistory(VideoModel(i + 1))
+                }
+
+                courseVideos.add(CourseVideosModel(i + 1, videoTitles[i], videoImages[i]))
             }
 
-            callbackRequest.getResponse(courseVideos)
+            val videoState = service.getVideoHistory
+
+            callbackRequest.getRes(CourseModel(title, courseVideos, videoState))
         }
     }
 }

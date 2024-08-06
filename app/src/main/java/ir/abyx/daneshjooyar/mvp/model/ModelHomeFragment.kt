@@ -4,9 +4,7 @@ import ir.abyx.daneshjooyar.R
 import ir.abyx.daneshjooyar.data.local.dataModel.CatModel
 import ir.abyx.daneshjooyar.data.local.dataModel.ContentModel
 import ir.abyx.daneshjooyar.data.local.dataModel.MainModel
-import ir.abyx.daneshjooyar.data.local.dataModel.VideoModel
 import ir.abyx.daneshjooyar.data.local.ext.CallbackRequest
-import ir.abyx.daneshjooyar.mvp.ext.ToastUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,6 +44,13 @@ class ModelHomeFragment {
         R.drawable.image_3,
     )
 
+    private val finalContentTitle = listOf(
+        contentTitle1, contentTitle2, contentTitle1, contentTitle2, contentTitle1
+    )
+    private val finalContentImage = listOf(
+        contentImage1, contentImage2, contentImage1, contentImage2, contentImage1
+    )
+
     fun getMain(callBackRequest: CallbackRequest<MainModel>) {
         CoroutineScope(Dispatchers.IO).launch {
             val cats = ArrayList<CatModel>()
@@ -69,63 +74,18 @@ class ModelHomeFragment {
         }
     }
 
-//    fun getCats(callBackRequest: CallbackRequest<CatModel>) {
-//        CoroutineScope(Dispatchers.IO).launch {
-//            val myCats = ArrayList<CatModel>()
-//            for (i in 0..3)
-//                myCats.add(CatModel(id = i, title = catTitles[i], icon = catIcon[i]))
-//
-//            callBackRequest.getResponse(myCats)
-//        }
-//    }
-
     fun getContentById(id: Int, callBackRequest: CallbackRequest<ContentModel>) {
         CoroutineScope(Dispatchers.IO).launch {
             val myContents = ArrayList<ContentModel>()
-            val finalContentTitle: List<String>
-            val finalContentImage: List<Int>
-
-            when (id) {
-                0 -> {
-                    finalContentTitle = contentTitle1
-                    finalContentImage = contentImage1
-                }
-
-                1 -> {
-                    finalContentTitle = contentTitle2
-                    finalContentImage = contentImage2
-                }
-
-                2 -> {
-                    finalContentTitle = contentTitle1
-                    finalContentImage = contentImage1
-                }
-
-                3 -> {
-                    finalContentTitle = contentTitle2
-                    finalContentImage = contentImage2
-                }
-
-                4 -> {
-                    finalContentTitle = contentTitle1
-                    finalContentImage = contentImage1
-                }
-
-                else -> {
-                    finalContentTitle = contentTitle1
-                    finalContentImage = contentImage1
-                }
-            }
-
-            for (i in finalContentTitle.indices)
+            for (i in finalContentTitle[id].indices) {
                 myContents.add(
                     ContentModel(
                         id = i,
-                        title = finalContentTitle[i],
-                        image = finalContentImage[i]
+                        title = finalContentTitle[id][i],
+                        image = finalContentImage[id][i]
                     )
                 )
-
+            }
             callBackRequest.getResponse(myContents)
         }
     }

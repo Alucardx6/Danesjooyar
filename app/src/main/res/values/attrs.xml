@@ -4,8 +4,10 @@
         <attr name="hintText" format="string" />
         <attr name="type" format="integer" />
         <attr name="rtlSupport" format="boolean" />
-        <attr name="centerGravity" format="boolean" />
+        <attr name="topGravity" format="boolean" />
         <attr name="max" format="integer" />
+        <attr name="height" format="dimension" />
+        <attr name="isIconVisible" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="CustomButton">

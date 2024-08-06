@@ -1,6 +1,7 @@
 package ir.abyx.daneshjooyar.mvp.presenter
 
 import android.content.Context
+import ir.abyx.daneshjooyar.data.local.dataModel.CourseModel
 import ir.abyx.daneshjooyar.data.local.dataModel.CourseVideosModel
 import ir.abyx.daneshjooyar.data.local.ext.CallbackRequest
 import ir.abyx.daneshjooyar.mvp.ext.BaseLifecycle
@@ -20,8 +21,8 @@ class PresenterCourseVideosFragment(
     }
 
     fun initialize() {
-        model.getVideoList(object : CallbackRequest<CourseVideosModel> {
-            override fun getResponse(response: ArrayList<CourseVideosModel>) {
+        model.getVideoList(object : CallbackRequest<CourseModel> {
+            override fun getRes(response: CourseModel) {
                 CoroutineScope(Dispatchers.Main).launch {
                     view.initialize(response)
                 }

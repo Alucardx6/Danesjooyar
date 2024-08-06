@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id ("kotlin-kapt")
+    id("kotlin-kapt")
 }
 
 android {
@@ -55,24 +55,24 @@ dependencies {
     //Justify Text View
     implementation(libs.justifiedtextview)
 
-    //security
-    implementation(libs.androidx.security.crypto)
-
     //expo
     implementation(libs.google.exoplayer)
 
+    //glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    //debug
+    debugImplementation ("com.squareup.leakcanary:leakcanary-android:2.14")
+
 
     //room
-//    implementation ("androidx.room:room-ktx:2.5.1")
-//    implementation ("androidx.room:room-runtime:2.5.1")
-//    implementation ("com.google.code.gson:gson:2.8.7")
-//    kapt ("androidx.room:room-compiler:2.5.1")
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
 
-
-//    implementation("androidx.room:room-ktx:2.6.1")
-//    implementation("androidx.room:room-runtime:2.6.1")
-//    kapt("androidx.room:room-compiler:2.6.1")
-
+    //retrofit
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

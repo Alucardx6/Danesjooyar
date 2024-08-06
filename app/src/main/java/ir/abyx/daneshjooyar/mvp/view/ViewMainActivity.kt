@@ -19,10 +19,6 @@ class ViewMainActivity(private val context: Context, private val activityUtils: 
 
     val binding = ActivityMainBinding.inflate(LayoutInflater.from(context))
 
-    fun initialize() {
-
-    }
-
     fun setFragment() {
         activityUtils.setFragment(HomeFragment())
     }
@@ -44,45 +40,7 @@ class ViewMainActivity(private val context: Context, private val activityUtils: 
 
     fun initAppBar() {
         binding.customAppBar.support().setOnClickListener {
-            val view = CustomDialogTicketBinding.inflate(LayoutInflater.from(context))
-            val dialog = Dialog(context)
-            dialog.setContentView(view.root)
-            dialog.setCancelable(false)
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.show()
-
-            view.imgCancel.setOnClickListener {
-                dialog.dismiss()
-            }
-
-            view.customButton.getView().setOnClickListener {
-                val title = view.customEdtTitle
-                val desc = view.customEdtDesc
-
-                title.setError(null)
-                desc.setError(null)
-
-                if (title.getText().isNullOrEmpty()) {
-                    title.setError("لطفا عنوان را وارد کنید")
-                    return@setOnClickListener
-                }
-                if (title.getText().trim().length < 5) {
-                    title.setError("عنوان نمیتواند کمتر از ۵ کارکتر باشد")
-                    return@setOnClickListener
-                }
-
-                if (desc.getText().isNullOrEmpty()) {
-                    desc.setError("لطفا توضیحات خود را وارد کنید")
-                    return@setOnClickListener
-                }
-                if (desc.getText().trim().length < 10) {
-                    desc.setError("توضیحات نمیتواند کمتر از ۱۰ کارکتر باشد")
-                    return@setOnClickListener
-                }
-
-                ToastUtils.toast(context, "پیام شما ارسال شد")
-                dialog.dismiss()
-            }
+           binding.customAppBar.supportDialog()
         }
     }
 }

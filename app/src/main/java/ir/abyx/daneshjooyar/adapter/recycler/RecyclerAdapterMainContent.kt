@@ -38,6 +38,7 @@ class RecyclerAdapterMainContent(
 
                 root.setOnClickListener {
                     val intent = Intent(context, CourseDetailActivity::class.java)
+                    intent.putExtra("title", content.title)
                     intent.putExtra("id", content.id)
                     context.startActivity(intent)
                 }

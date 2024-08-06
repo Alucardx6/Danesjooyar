@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Daneshjooyar</string>
+    <string name="app_name">دانشجویار</string>
     <string name="img_desc">image desc</string>
     <string name="login_or_signup">ورود یا ثبت نام</string>
     <string name="login_desc">لطفا شماره موبایل خود را وارد کنید.</string>

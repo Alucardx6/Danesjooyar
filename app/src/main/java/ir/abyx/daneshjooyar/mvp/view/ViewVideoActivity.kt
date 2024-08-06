@@ -33,7 +33,7 @@ class ViewVideoActivity(private val context: Context, private val activityUtils:
     fun initialize(videoInfo: String, history: VideoModel, viewUtils: ViewUtils) {
         binding.apply {
 
-            txtVideoTitle.text = history.title
+            //txtVideoTitle.text = history.title
 
             progressBar.progress = history.percent.roundToInt()
             txtProgress.text = "${progressBar.progress}/100%"
@@ -52,7 +52,7 @@ class ViewVideoActivity(private val context: Context, private val activityUtils:
             val mediaItem = MediaItem.fromUri(videoInfo)
             player.setMediaItem(mediaItem)
             player.prepare()
-            player.play()
+//            player.play()
 
 
             player.addListener(object : Player.Listener {
@@ -99,21 +99,21 @@ class ViewVideoActivity(private val context: Context, private val activityUtils:
 
             btnFullscreen.setOnClickListener {
                 isFullscreen = !isFullscreen
-                if (isFullscreen) {
-                    btnFullscreen.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            context,
-                            R.drawable.ic_exit_fullscreen
-                        )
-                    )
-                } else {
-                    btnFullscreen.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            context,
-                            R.drawable.ic_fullscreen
-                        )
-                    )
-                }
+//                if (isFullscreen) {
+//                    btnFullscreen.setImageDrawable(
+//                        ContextCompat.getDrawable(
+//                            context,
+//                            R.drawable.ic_exit_fullscreen
+//                        )
+//                    )
+//                } else {
+//                    btnFullscreen.setImageDrawable(
+//                        ContextCompat.getDrawable(
+//                            context,
+//                            R.drawable.ic_fullscreen
+//                        )
+//                    )
+//                }
                 activityUtils.fullScreen(isFullscreen)
             }
             //endregion
@@ -154,12 +154,6 @@ class ViewVideoActivity(private val context: Context, private val activityUtils:
 
     fun videoCurrentTime(): Long = player.currentPosition
 
-    fun backButton() {
-        binding.customAppBar.getBackIcon().setOnClickListener {
-            activityUtils.finished()
-        }
-    }
-
     private fun updateLottiePosition() {
         val thumbX = binding.progressBar.thumb.bounds.left
         val newX = (thumbX - binding.lottieAnimationView.width / 2 + 32).toFloat()
@@ -172,6 +166,16 @@ class ViewVideoActivity(private val context: Context, private val activityUtils:
 
     fun releasePlayer() {
         player.release()
+    }
+
+    fun initAppBar() {
+        binding.customAppBar.getBackIcon().setOnClickListener {
+            activityUtils.finished()
+        }
+
+        binding.customAppBar.support().setOnClickListener {
+            binding.customAppBar.supportDialog()
+        }
     }
 
 }
